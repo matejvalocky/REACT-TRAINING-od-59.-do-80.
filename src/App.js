@@ -16,7 +16,7 @@ const App = () => {
     }
    
     
-  })
+  },[]) // ak doplním ,[] medzi zátvorky, tak sa useEffect spustí iba raz
 
   
 
