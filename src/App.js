@@ -1,27 +1,30 @@
-import { useState, useEffect } from "react"
-
+// React 65 (useState, useEffect a API)
 const App = () => {
- const [windowSize, setWindowSize] = useState(window.innerWidth)
+  const url = "https://api.kanye.rest/"
 
- const sizeControl = () => {
-  setWindowSize(window.innerWidth)
- } 
 
- useEffect( () => {
-    console.log("ja som useEffect");
-    window.addEventListener("resize", sizeControl) // pridávame resize
-    return () => {
-      console.log("ja som cleanUp function")
-      window.removeEventListener("resize", sizeControl) // odoberáme resize
-    }
- })
+  // synchrónny javascript znamená, že prevedie najprv 1. potom 2. a nakoniec 3. riadok kódu
+  // 1. riadok kódu
+  // 2. riadok kódu - trvanie napríklad 5 sekúnd
+  // 3. riadok kódu
+
+  // asynchrónny znamená, že žiadny krok nebrzdí ten ďalší
+
   
+
+  const getQuote = async () => { // async znamená asynchronny javascript
+    const response = await fetch(url) // zachyť mi tie data, poslanie žiadosti o dáta. AWAIT počká sa kým sa to dokončí a až potom sa prejde na ďalší riadok
+    const data = await response.json() // rozbalili sme to a bude to objekt. AWAIT počkaj, kým sa to rozbalí a potom sa to uloží do dát (data)
+
+    //pokiaľ chceme používať AWAIT, tak musíme hore napísať ASYNC, to znamená, počkaj, kým to dokončí a potom až pokračuj ďalej = AWAIT
+    console.log(data["quote"])
+  }
+
+  getQuote()
+
+
   return (
-    <div> 
-        <h1>šírka okna</h1>
-        <h2>{windowSize}</h2>
-    </div>
-   
+    <h1>nič</h1>
   )
 }
 
