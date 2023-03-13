@@ -1,6 +1,9 @@
-// React 65 (useState, useEffect a API)
+// React 66 - Vypísanie pomocou premennej nefunguje
 const App = () => {
   const url = "https://api.kanye.rest/"
+  let quote = "východzí text"
+
+  console.log("Text nad funkciou")
 
 
   // synchrónny javascript znamená, že prevedie najprv 1. potom 2. a nakoniec 3. riadok kódu
@@ -17,14 +20,19 @@ const App = () => {
     const data = await response.json() // rozbalili sme to a bude to objekt. AWAIT počkaj, kým sa to rozbalí a potom sa to uloží do dát (data)
 
     //pokiaľ chceme používať AWAIT, tak musíme hore napísať ASYNC, to znamená, počkaj, kým to dokončí a potom až pokračuj ďalej = AWAIT
-    console.log(data["quote"])
+    quote = data["quote"]
+    console.log("Text vo funkcii")
   }
 
   getQuote()
 
 
   return (
-    <h1>nič</h1>
+    <div> 
+      <h1>{quote}</h1>
+      {console.log("text v return")}
+    </div>
+   
   )
 }
 
