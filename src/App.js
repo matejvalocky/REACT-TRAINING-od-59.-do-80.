@@ -8,7 +8,12 @@ const App = () => {
  } 
 
  useEffect( () => {
-    window.addEventListener("resize", sizeControl)
+    console.log("ja som useEffect");
+    window.addEventListener("resize", sizeControl) // pridávame resize
+    return () => {
+      console.log("ja som cleanUp function")
+      window.removeEventListener("resize", sizeControl) // odoberáme resize
+    }
  })
   
   return (
