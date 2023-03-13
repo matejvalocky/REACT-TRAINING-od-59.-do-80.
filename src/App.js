@@ -1,34 +1,20 @@
-// React 68 - useState a useEffect dohromady řeší náš problém
-
-import { useState, useEffect } from "react"
+//React 69 - API pre medzinárodnú vesmírnu stanicu
 
 const App = () => {
-  const [quote, setQuote] = useState("východzí text")
-  const url = "https://api.kanye.rest/" // URL NA API
 
+  const url = "http://api.open-notify.org/iss-now.json"
 
-
-  const getQuote = async () => { 
-    const response = await fetch(url) 
-    const data = await response.json() 
-    const finalQuote = data["quote"] // do finalQuote sa nastaví citát
-    setQuote(finalQuote)
-    
-
+  const getCoordinates = async() => {
+    const response = await fetch(url)
+    const data = await response.json() // než spustíš tento riadok, počkaj kým sa dokončí riadok nad ním
+    console.log(data["iss_position"]["latitude"]) // zemepisná šírka
+    console.log(data["iss_position"]["longitude"]) // zemepisná dĺžka
   }
 
-  useEffect( () => {
-    getQuote() // ZAVOLANIE FUNKCIE
-  },[]) // funkcia, ktorú obaľuje useEffect sa prevedie iba raz lebo sme pridali na konci ,[]
+  getCoordinates() // zavolanie funkcie
 
-  
-
-
-  return ( // tu prebieha renderovanie
-    <div> 
-      <h1>{quote}</h1>
-    </div>
-   
+  return (
+    <h1>API</h1>
   )
 }
 
