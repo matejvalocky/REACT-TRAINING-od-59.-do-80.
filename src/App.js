@@ -1,24 +1,35 @@
-//React 70 vypísanie zem. šírky a dlžky ISS do stránky nefunguje
+//React 71 Vypísanie, ktoré funguje (useState, useEffect) 
+
+// potrebujeme refreshnut, teda znova vypísať komponentu do stránky = useState
+
+import { useState, useEffect} from "react"
 
 const App = () => {
 
   const url = "http://api.open-notify.org/iss-now.json"
 
-  let latitude = ""
-  let longitude = ""
+  // 1. nastavenie latitude a longitude na prázdne stringy cez useState
 
-  const getCoordinates = async() => {
+  const [latitude, setLatitude] = useState("") // prázdny string sa nastaví do latitude
+  const [longitude, setLongitude] = useState("") // prázdny string sa nastaví do longitude
+
+  
+
+  const getCoordinates = async() => { //3. zavolanie funkcie, vďaka nej latitute a logtitude nastav na správne hodnoty a potom to všetko vyrenderuj do stránky
     const response = await fetch(url)
     const data = await response.json() // než spustíš tento riadok, počkaj kým sa dokončí riadok nad ním
-    console.log(data["iss_position"]["latitude"]) // zemepisná šírka
-    console.log(data["iss_position"]["longitude"]) // zemepisná dĺžka
-    latitude = data["iss_position"]["latitude"]
-    longitude = data["iss_position"]["longitude"]
+
+    setLatitude(data["iss_position"]["latitude"])
+    setLongitude(data["iss_position"]["longitude"])
   }
 
-  getCoordinates() // zavolanie funkcie
+  useEffect ( () => { // pôjde to až úplne na konci
+    getCoordinates() // zavolanie funkcie
+  }, []) // zavolanie funkcie len raz
 
-  return (
+  
+
+  return (        // 2. zavolanie return
     <div>
       <h1>API</h1>
       <h2>Zemepisná šírka</h2>
