@@ -1,4 +1,4 @@
-// React 75 - Vypisujeme aktuální data z API do stránky
+// React 76 - Ako pracovať s nápisom Načítanie stránky
 // druhy return nebude nikdy spustený = unreacheable code = nedostiahnuteľný kód
 
 import { useState, useEffect } from "react"
@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 const url = "http://api.open-notify.org/iss-now.json"
 
 const App = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [latitude, setLatitude] = useState("")
   const [longitude, setLongitude] = useState("")
 
@@ -21,6 +21,8 @@ const App = () => {
                   setLatitude(position["latitude"])
                   setLongitude(position["longitude"])
               })
+
+              setLoading(false)
 
   }, []) 
 
