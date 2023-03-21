@@ -30,10 +30,10 @@ const App = () => {
 
 
   // <></> dáva sa to namiesto div
-    return <>  <h2>Zemepisná šírka</h2>  
-        <p>{latitude}</p>
-        <h2>Zemepisná dĺžka</h2>
-        <p>{longitude}</p>
+    return <>   <h2>Zemepisná šírka</h2>  
+                <p>{latitude}</p>
+                <h2>Zemepisná dĺžka</h2>
+                <p>{longitude}</p>
     </>
   
 
