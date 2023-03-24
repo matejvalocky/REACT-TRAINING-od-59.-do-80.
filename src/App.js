@@ -1,44 +1,27 @@
-// React 76 - Ako pracovať s nápisom Načítanie stránky
-// druhy return nebude nikdy spustený = unreacheable code = nedostiahnuteľný kód
-
-import { useState, useEffect } from "react"
-
-const url = "http://api.open-notify.org/iss-now.json"
+// React 77 - Short circuit evaluation
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
-  const [latitude, setLatitude] = useState("")
-  const [longitude, setLongitude] = useState("")
+  const value = "david"
+  const value2 = "harry"
+
+  const result1 = value && value2
+  // prvý je true a druhé je akékoľvek = vracia sa druhá hodnota
+  // prvý je false a druhé akokoľvek = vracia sa prvá hodnota
+  console.log(result1)
+
+  const result2 = value || "tomas"
+  // prvý je true a druhé akékoľvek = vracia sa prvá hodnota
+  // prvý je false, tak vracia sa druhá hodnota
+  console.log(result2)
 
 
 
-  useEffect( () => {
-    fetch(url).then( (response) => response.json())
-              .then( (data) => data["iss_position"]) 
-              .then( (position) => {
-                  // console.log(position["latitude"])
-                  // console.log(position["longitude"])
-                  setLatitude(position["latitude"])
-                  setLongitude(position["longitude"])
-              })
 
-              setLoading(false)
+  return <div>
+    
+  </div>
 
-  }, []) 
-
-  if(loading){
-    return <h2>Načítanie stránky</h2>
-  }
-
-
-  // <></> dáva sa to namiesto div
-    return <>   <h2>Zemepisná šírka</h2>  
-                <p>{latitude}</p>
-                <h2>Zemepisná dĺžka</h2>
-                <p>{longitude}</p>
-    </>
   
-
 }
 
 export default App
