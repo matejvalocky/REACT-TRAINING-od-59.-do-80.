@@ -1,5 +1,6 @@
   // React 79  Ternárny operátor (ternary operator)
 
+  
   const App = () => {
     const error = false
     return <div>
