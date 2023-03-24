@@ -1,28 +1,25 @@
-// React 78 - Short circuit evaluation 2. časť
+  // React 78  Ternárny operátor (ternary operator)
 
-const App = () => {
-  const value = "david"
-  const value2 = 1
+  const App = () => {
+    const error = false
+    return <div>
 
-  const result1 = value && value2
-  // prvý je true = vracia sa druhá hodnota
-  // prvý je false = vracia sa prvá hodnota
-  console.log(result1)
+      {/* toto je štandardný (dlhý) zápis podmienky */}
+      {/* {
+        if (error) {
+          <p>Chyba</p>
+        } else {
+          <h1>Obsah stránky</h1>
+      } */}
 
-  const result2 = value || "tomas"
-  // prvý je true = vracia sa prvá hodnota
-  // prvý je false, tak vracia sa druhá hodnota
-  // console.log(result2)
+      {/* toto dolu je skrátený zápis podmienky */}
+      {error ? <p>Chyba</p> : <div>
+        <h2>Obsah stránky</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis quo modi soluta asperiores. Repellat blanditiis temporibus labore sed dolores. Accusamus beatae similique hic at eligendi ut minus? Sed, itaque sit?</p>
+        </div> } 
 
 
+    </div>
+  }
 
-
-  return <div>
-    <h1>{value2 || "Defaultný text"}</h1>
-    {value2 && <h1>Supertajný nadpis</h1>}
-  </div>
-
-  
-}
-
-export default App
+  export default App
