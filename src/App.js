@@ -1,4 +1,4 @@
-  // React 78  Ternárny operátor (ternary operator)
+  // React 79  Ternárny operátor (ternary operator)
 
   const App = () => {
     const error = false
