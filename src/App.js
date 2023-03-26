@@ -1,16 +1,9 @@
-// React 80 - Ukáž a skry komponentu
-
-import { useState } from "react"
-import Book from "./components/Book"
+// React 81+82 -  Projekt překlikávání filmů - připravujeme data
 
 const App = () => {
-  const [show, setShow] = useState(false)
-
   return <div>
-    <button onClick={() => setShow(!show)}>Ukáž / Skry </button>
-    {show && <Book />}
+    <h1>Text</h1>
   </div>
-
 }
 
-  export default App 
+export default App
