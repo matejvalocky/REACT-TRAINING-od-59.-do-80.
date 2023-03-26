@@ -1,26 +1,16 @@
-  // React 79  Ternárny operátor (ternary operator)
+// React 80 - Ukáž a skry komponentu
 
-  
-  const App = () => {
-    const error = false
-    return <div>
+import { useState } from "react"
+import Book from "./components/Book"
 
-      {/* toto je štandardný (dlhý) zápis podmienky */}
-      {/* {
-        if (error) {
-          <p>Chyba</p>
-        } else {
-          <h1>Obsah stránky</h1>
-      } */}
+const App = () => {
+  const [show, setShow] = useState(false)
 
-      {/* toto dolu je skrátený zápis podmienky */}
-      {error ? <p>Chyba</p> : <div>
-        <h2>Obsah stránky</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis quo modi soluta asperiores. Repellat blanditiis temporibus labore sed dolores. Accusamus beatae similique hic at eligendi ut minus? Sed, itaque sit?</p>
-        </div> } 
+  return <div>
+    <button onClick={() => setShow(!show)}>Ukáž / Skry </button>
+    {show && <Book />}
+  </div>
 
+}
 
-    </div>
-  }
-
-  export default App
+  export default App 
